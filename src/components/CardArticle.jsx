@@ -1,7 +1,6 @@
 import {Link } from 'react-router-dom';
 
-const CardArticle = (props) => {
-    const { article } = props;
+const CardArticle = ({article}) => {
     return ( 
         <div className={`card-article card-color-${article.id_color}`} key={article.id}>
             <div className="card-article-image">

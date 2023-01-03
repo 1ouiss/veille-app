@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import FormComment from "../components/FormComment";
 
-const Article = () => {
+const Article = ({localStorageArticles, setLocalStorageArticles}) => {
     const { id } = useParams();
     const [article, setArticle] = useState({});
 
@@ -31,6 +31,24 @@ const Article = () => {
         console.log(res);
     }
 
+    const handleClick = (id) => {
+
+
+        for (let i = 0; i < localStorageArticles.length; i++) {
+            if (localStorageArticles[i].id === id) {
+                console.log('article déjà enregistré');
+            }else{
+                setLocalStorageArticles([...localStorageArticles, article])
+                const newLocalStorageArticles = localStorageArticles;
+                console.log(localStorageArticles);
+                localStorage.setItem('articles', JSON.stringify(newLocalStorageArticles));
+            }
+            
+        }
+
+    }
+
+
     return ( 
         <div className="container">
             <div className={`article-img image-${article.id_color}`}></div>
@@ -48,6 +66,21 @@ const Article = () => {
                 </div>
             </div>
             <FormComment addComment={addComment}/>
+            <div>
+                <h2>Commentaires</h2>
+                {
+                    article.comments && article.comments.map(comment => (
+                        <div key={comment.id}>
+                            <p>{comment.name}</p>
+                            <p>{comment.comment}</p>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div onClick={() => handleClick(article.id)}>
+                enregistrer
+            </div>
         </div>
      );
 }

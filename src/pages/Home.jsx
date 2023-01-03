@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import CardArticle from "../components/CardArticle";
 
-const Home = () => {
+const Home = ({localStorageArticles}) => {
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
@@ -12,10 +12,6 @@ const Home = () => {
         }
         fetchArticles();
     }, []);
-    
-    const redirectTo = (id) => {
-        window.location.href = `/${id}`;
-    }
 
     return ( 
         <div className="container">
@@ -25,9 +21,20 @@ const Home = () => {
             </div>
             <div className="card-container">
                 <h3>NOS DERNIÈRES ACTUS</h3>
-                {articles.map(article => (
-                    <CardArticle key={article.id} article={article}/>
-                ))}
+                {
+                    articles && articles.map(article => (
+                        <CardArticle key={article.id} article={article}/>
+                    ))
+                }
+            </div>
+
+            <div className="card-container">
+                <h3>MES ENREGISTREMENTS</h3>
+                {
+                    articles && localStorageArticles && localStorageArticles.map(article => (
+                        <CardArticle key={article.id} article={article}/>
+                    ))
+                }
             </div>
         </div>
      );
