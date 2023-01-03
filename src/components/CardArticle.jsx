@@ -7,13 +7,25 @@ const CardArticle = ({article}) => {
                 <img src={article.image} alt={article.title} />
             </div>
             <div className="card-article-text">
-                <h3>{article.title}</h3>
-                <p>{article.description}</p>
-                <button>
-                    <Link to={`/${article.id}`}>Read More</Link>
-                </button>
+                <div>
+                    <h3>{article.title}</h3>
+                    <p>{article.description}</p>
+                </div>
+                <div>
+                    <Link to={`/${article.id}`}>
+                        <div class="container__hover">
+                            <ul>
+                                <li>
+                                    <p class="text">Découvrir 
+                                        <div class="plus__top"></div>
+                                        <div class="plus__left"></div>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </Link>
+                </div>
             </div>
-
         </div>
      );
 }
