@@ -3,7 +3,7 @@ import {Link } from 'react-router-dom';
 const CardArticle = (props) => {
     const { article } = props;
     return ( 
-        <div className={`card-article card-color-${article.id}`} key={article.id}>
+        <div className={`card-article card-color-${article.id_color}`} key={article.id}>
             <div className="card-article-image">
                 <img src={article.image} alt={article.title} />
             </div>

@@ -33,11 +33,11 @@ const Article = () => {
 
     return ( 
         <div className="container">
-            <div className={`article-img image-${id}`}></div>
+            <div className={`article-img image-${article.id_color}`}></div>
             <div className="article-text">
                 <div className="article-text-title">
                     <h1>{article.title}</h1>
-                    <p className={`article-date color-${id}`}>Ecrit le {article.date} par {article.writeBy}</p>
+                    <p className={`article-date color-${article.id_color}`}>Ecrit le {article.date} par {article.writeBy}</p>
                 </div>
                 <div className="article-text-content">
                     <p>{article.description}</p>
@@ -45,7 +45,6 @@ const Article = () => {
             </div>
             <FormComment addComment={addComment}/>
         </div>
-
      );
 }
  

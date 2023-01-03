@@ -15,7 +15,8 @@ const FormComment = (props) => {
     }
 
     const onSubmit = (e) => {
-        props.addComment(comment);
+        e.preventDefault();
+        props.addComment(e, comment);
         setComment({
             name: '',
             comment: ''
