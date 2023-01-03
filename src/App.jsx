@@ -12,7 +12,6 @@ function App() {
 
   useEffect(() => {
     const articlesLocal = localStorage.getItem('articles')
-    console.log(articlesLocal);
     if (articlesLocal) {
       setLocalStorageArticles(JSON.parse(articlesLocal))
     }

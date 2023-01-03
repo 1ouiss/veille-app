@@ -31,13 +31,14 @@ const Home = ({localStorageArticles}) => {
             <div className="card-container">
                 <h3>MES ENREGISTREMENTS</h3>
                 {
-                    articles && localStorageArticles && localStorageArticles.map(article => (
+                    localStorageArticles.length > 0 ? localStorageArticles.map(article => (
                         <CardArticle key={article.id} article={article}/>
                     ))
+                    : <p>Vous n'avez pas encore enregistré d'articles</p>
                 }
             </div>
         </div>
-     );
+    );
 }
  
 export default Home;

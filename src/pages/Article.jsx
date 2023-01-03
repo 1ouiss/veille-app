@@ -36,16 +36,23 @@ const Article = ({localStorageArticles, setLocalStorageArticles}) => {
     }
 
     const handleClick = (id) => {
-        for (let i = 0; i < localStorageArticles.length; i++) {
-            if (localStorageArticles[i].id === id) {
-                console.log('article déjà enregistré');
-            }else{
-                setLocalStorageArticles([...localStorageArticles, article])
-                const newLocalStorageArticles = localStorageArticles;
-                console.log(localStorageArticles);
-                localStorage.setItem('articles', JSON.stringify(newLocalStorageArticles));
+        console.log("click");
+        if (localStorageArticles.length === 0) {
+            setLocalStorageArticles([...localStorageArticles, article])
+            const newLocalStorageArticles = localStorageArticles;
+            console.log(localStorageArticles);
+            localStorage.setItem('articles', JSON.stringify(newLocalStorageArticles));
+        }else{
+            for (let i = 0; i < localStorageArticles.length; i++) {
+                if (localStorageArticles[i].id === id) {
+                    console.log('article déjà enregistré');
+                }else{
+                    setLocalStorageArticles([...localStorageArticles, article])
+                    const newLocalStorageArticles = localStorageArticles;
+                    console.log(localStorageArticles);
+                    localStorage.setItem('articles', JSON.stringify(newLocalStorageArticles));
+                }
             }
-            
         }
 
     }
@@ -70,11 +77,13 @@ const Article = ({localStorageArticles, setLocalStorageArticles}) => {
 
     return ( 
         <div className="container">
-            <div className={`article-img image-${article.id_color}`}></div>
+            <div className={`article-img image-${article.id}`}>
+                <img src={article.image} alt="" />
+            </div>
             <div className="article-text">
                 <div className="article-text-title">
                     <h1>{article.title}</h1>
-                    <p className={`article-date color-${article.id_color}`}>Ecrit le {article.date} par {article.writeBy}</p>
+                    <p className={`article-date color-${article.id_color}`}>Ecrit le {article.date} par {article.author}</p>
                 </div>
                 <div className="article-text-content">
                     {
