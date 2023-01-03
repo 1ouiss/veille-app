@@ -29,11 +29,13 @@ const Article = ({localStorageArticles, setLocalStorageArticles}) => {
             })
         });
         console.log(res);
+        setArticle({
+            ...article,
+            comments: newComments
+        })
     }
 
     const handleClick = (id) => {
-
-
         for (let i = 0; i < localStorageArticles.length; i++) {
             if (localStorageArticles[i].id === id) {
                 console.log('article déjà enregistré');
@@ -46,6 +48,23 @@ const Article = ({localStorageArticles, setLocalStorageArticles}) => {
             
         }
 
+    }
+
+    const handleLike = (id) => {
+        const newLike = article.likes + 1;
+        console.log(newLike);
+        const res = fetch(`https://629a00896f8c03a9784e867c.mockapi.io/articles/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                ...article,
+                likes: newLike
+            })
+        });
+        console.log(res);
+        setArticle({...article, likes: newLike})
     }
 
 
@@ -78,8 +97,17 @@ const Article = ({localStorageArticles, setLocalStorageArticles}) => {
                 }
             </div>
 
-            <div onClick={() => handleClick(article.id)}>
+            <button onClick={() => handleClick(article.id)}>
                 enregistrer
+            </button>
+
+            <button onClick={() => handleLike(article.id)}>
+                j'aime
+            </button>
+            <div>
+                {
+                    article.likes
+                }
             </div>
         </div>
      );
