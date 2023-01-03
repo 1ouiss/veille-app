@@ -3,13 +3,15 @@
         display: flex;
         flex-direction: column;
         margin-bottom: 1.5rem;
+        max-width: 500px;
         .form-comment-input{
             margin-bottom: 1rem;
             input{
                 width: 100%;
                 padding: 0.5rem;
-                border: 1px solid #000;
                 border-radius: 5px;
+                outline: none;
+                border: 1px solid #ccc;
                 &:focus{
                     outline: none;
                     border: 1px solid #ccc;
@@ -18,22 +20,25 @@
             textarea{
                 width: 100%;
                 padding: 0.5rem;
-                border: 1px solid #000;
                 border-radius: 5px;
+                outline: none;
+                border: 1px solid #ccc;
                 &:focus{
                     outline: none;
                     border: 1px solid #ccc;
                 }
             }
             button{
-                padding: 0.5rem;
-                border: 1px solid #000;
+                padding: 12px 24px;
                 border-radius: 5px;
-                background-color: #000;
+                background-color: $color-article-3;
                 color: #fff;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                transition: all 0.3s ease;
                 &:hover{
-                    background-color: #ccc;
-                    color: #000;
+                    background-color: $color-article-2;
                 }
             }
         }

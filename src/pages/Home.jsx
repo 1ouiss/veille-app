@@ -20,7 +20,7 @@ const Home = ({localStorageArticles}) => {
                 <h1>L'ACTUALITÉ SUR LES START-UP</h1>
             </div>
             <div className="card-container">
-                <h3>NOS DERNIÈRES ACTUS</h3>
+                <h3 className="section-title">NOS DERNIÈRES <span className="color-2">ACTUS</span></h3>
                 {
                     articles && articles.map(article => (
                         <CardArticle key={article.id} article={article}/>
@@ -29,12 +29,12 @@ const Home = ({localStorageArticles}) => {
             </div>
 
             <div className="card-container">
-                <h3>MES ENREGISTREMENTS</h3>
+                <h3 className="section-title">MES <span className="color-4">ENREGISTREMENTS</span></h3>
                 {
                     localStorageArticles.length > 0 ? localStorageArticles.map(article => (
                         <CardArticle key={article.id} article={article}/>
                     ))
-                    : <p>Vous n'avez pas encore enregistré d'articles</p>
+                    : <p className="error">Vous n'avez pas encore enregistré d'articles</p>
                 }
             </div>
         </div>

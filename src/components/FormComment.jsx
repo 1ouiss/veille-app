@@ -3,7 +3,8 @@ import { useState } from "react";
 const FormComment = (props) => {
     const [comment, setComment] = useState({
         name: '',
-        comment: ''
+        comment: '',
+        avatar: ''
     });
 
     const onChange = (e) => {
@@ -16,11 +17,19 @@ const FormComment = (props) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        props.addComment(e, comment);
-        setComment({
-            name: '',
-            comment: ''
-        });
+        // setComment({
+        //     ...comment,
+        //     avatar: `https://api.multiavatar.com/${comment.name}.svg`
+        // })
+        comment.avatar = `https://api.multiavatar.com/${comment.name}.svg`
+        setTimeout(() => {   
+            props.addComment(e, comment);
+            setComment({
+                name: '',
+                comment: '',
+                avatar: ''
+            });
+        }, 3000);
     }
 
     return ( 
@@ -34,8 +43,11 @@ const FormComment = (props) => {
                     <label htmlFor="comment">Commentaire</label>
                     <textarea name="comment" id="comment" cols="30" rows="10" onChange={onChange}></textarea>
                 </div>
-                <div className="form-comment-input">
+                {/* <div className="form-comment-input">
                     <input type="submit" value="Envoyer" />
+                </div> */}
+                <div className="form-comment-input">
+                    <button type="submit">Envoyer</button>
                 </div>
             </form>
         </div>
