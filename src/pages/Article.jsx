@@ -40,7 +40,11 @@ const Article = () => {
                     <p className={`article-date color-${article.id_color}`}>Ecrit le {article.date} par {article.writeBy}</p>
                 </div>
                 <div className="article-text-content">
-                    <p>{article.description}</p>
+                    {
+                        article.content && article.content.map(content => (
+                            <p key={content.id}>{content.text}</p>
+                        ))
+                    }
                 </div>
             </div>
             <FormComment addComment={addComment}/>
