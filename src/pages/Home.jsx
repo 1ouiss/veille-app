@@ -19,8 +19,12 @@ const Home = () => {
 
     return ( 
         <div className="container">
-            <h1>Home</h1>
+            <div className="home-title">
+                <img src="./logo.svg" alt="" />
+                <h1>L'ACTUALITÉ SUR LES START-UP</h1>
+            </div>
             <div className="card-container">
+                <h3>NOS DERNIÈRES ACTUS</h3>
                 {articles.map(article => (
                     <CardArticle key={article.id} article={article}/>
                 ))}
