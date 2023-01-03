@@ -36,6 +36,10 @@ a{
     color: $color-article-5;
 }
 
+.content-article{
+  margin-bottom: 7rem;
+}
+
 @media screen and (max-width: 768px) {
     .content-article{
         padding: 0 1rem;

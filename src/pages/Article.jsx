@@ -107,7 +107,7 @@ const Article = ({localStorageArticles, setLocalStorageArticles}) => {
                 <div>
                     <h2>Commentaires</h2>
                     {
-                        article.comments && article.comments.map(comment => (
+                        article.comments ?  article.comments.map(comment => (
                             <div key={comment.avatar} className="comment">
                                 <div className="comment-avatar">
                                     <img src={comment.avatar} alt="" />
@@ -118,6 +118,7 @@ const Article = ({localStorageArticles, setLocalStorageArticles}) => {
                                 </div>
                             </div>
                         ))
+                        : <p>Aucun commentaire</p>
                     }
                 </div>
             </div>
